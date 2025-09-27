@@ -1,16 +1,290 @@
 ---
-
+const title = "EternaMatcher - Premium Matchmaking Services";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content="Professional matchmaking services connecting hearts and building lasting relationships." />
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>EternaMatcher</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/consultation">Consultation</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Conscious & Mature Partnerships</h2>
+            <p>We combine international search, psychology, and coaching to help successful individuals find their life partner.</p>
+            <a href="/consultation" class="cta-button">Book Your Strategic Consultation</a>
+        </section>
+
+        <section class="differentiation">
+            <div class="diff-content">
+                <h3>Beyond Traditional Matchmaking</h3>
+                <p>Eterna Matching is an institute for conscious, mature partnerships where couple success is built at the intersection of psychology, coaching, and international search.</p>
+                <p>This isn't random matching—it's managed synergy between two people, supported by an expert team.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h3>How We're Different</h3>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h4>Executive Search Approach</h4>
+                    <p>We don't just search databases—we actively find your ideal match through exclusive networks and closed communities of high-net-worth individuals.</p>
+                </div>
+                <div class="feature">
+                    <h4>Psychology & Coaching Integration</h4>
+                    <p>Working through internal limitations, building relationship readiness, and creating sustainable partnerships through expert psychological support.</p>
+                </div>
+                <div class="feature">
+                    <h4>Complete Confidentiality</h4>
+                    <p>Strict NDAs and confidentiality protocols protect your privacy. You'll meet people who aren't on dating apps—successful individuals from exclusive circles.</p>
+                </div>
+                <div class="feature">
+                    <h4>Guaranteed Results</h4>
+                    <p>Minimum 6 personally curated introductions with high compatibility, supported at every stage of the process.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="process">
+            <h3>Our Process</h3>
+            <div class="process-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h4>Strategic Consultation</h4>
+                    <p>Personal consultation to determine goals, create precise profile, and assess readiness for partnership.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h4>Psychological Coaching</h4>
+                    <p>Address internal limitations, build readiness for sustainable relationships and family creation.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h4>Individual Candidate Search</h4>
+                    <p>Targeted pipeline matching your criteria, with thorough filtering and compatibility verification.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h4>Curated Introductions</h4>
+                    <p>Guaranteed minimum 6 personally selected meetings with high-compatibility matches.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <h4>Ongoing Support</h4>
+                    <p>Continuous guidance, progress monitoring, and strategy adjustments throughout your journey.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EternaMatcher. Creating lasting connections.</p>
+    </footer>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .differentiation {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+
+        .diff-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .diff-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .diff-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .process {
+            padding: 4rem 0;
+        }
+
+        .process h3 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            border-top: 4px solid #667eea;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h4 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</body>
 </html>
