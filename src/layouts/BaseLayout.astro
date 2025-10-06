@@ -1,0 +1,210 @@
+---
+import { t, getLangFromUrl, languages } from '../i18n/translations.js';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const pageTitle = title || t("site.title", lang);
+const pageDescription = description || t("site.description", lang);
+
+// Helper to build URLs for language switching
+function getLocalizedUrl(targetLang, currentPath) {
+  // Remove any existing language prefix
+  const pathWithoutLang = currentPath.replace(/^\/(es|fr|it|ru)/, '');
+  
+  // Add new language prefix (except for English)
+  return targetLang === 'en' 
+    ? pathWithoutLang || '/'
+    : `/${targetLang}${pathWithoutLang || '/'}`;
+}
+
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    
+    <!-- Language alternate links for SEO -->
+    <link rel="alternate" hreflang="en" href={`https://eternamatching.com${getLocalizedUrl('en', currentPath)}`} />
+    <link rel="alternate" hreflang="es" href={`https://eternamatching.com${getLocalizedUrl('es', currentPath)}`} />
+    <link rel="alternate" hreflang="fr" href={`https://eternamatching.com${getLocalizedUrl('fr', currentPath)}`} />
+    <link rel="alternate" hreflang="it" href={`https://eternamatching.com${getLocalizedUrl('it', currentPath)}`} />
+    <link rel="alternate" hreflang="ru" href={`https://eternamatching.com${getLocalizedUrl('ru', currentPath)}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://eternamatching.com${getLocalizedUrl('en', currentPath)}`} />
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>
+                <a href={lang === 'en' ? '/' : `/${lang}/`}>
+                    <img src="/logo.png" alt="EternaMatching" class="logo" />
+                </a>
+            </h1>
+            <ul>
+                <li><a href={lang === 'en' ? '/' : `/${lang}/`}>{t("nav.home", lang)}</a></li>
+                <li><a href={lang === 'en' ? '/about' : `/${lang}/about`}>{t("nav.about", lang)}</a></li>
+                <li><a href={lang === 'en' ? '/consultation' : `/${lang}/consultation`}>{t("nav.consultation", lang)}</a></li>
+                <li><a href={lang === 'en' ? '/services' : `/${lang}/services`}>{t("nav.services", lang)}</a></li>
+                <li><a href={lang === 'en' ? '/contact' : `/${lang}/contact`}>{t("nav.contact", lang)}</a></li>
+            </ul>
+            <div class="language-switcher">
+                {languages.map((language) => (
+                    <a 
+                        href={getLocalizedUrl(language.code, currentPath)}
+                        class:list={["lang-option", { active: lang === language.code }]}
+                        title={language.name}
+                    >
+                        {language.flag}
+                    </a>
+                ))}
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <slot />
+    </main>
+
+    <footer>
+        <p>{t("footer.copyright", lang)}</p>
+    </footer>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #000000;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            gap: 2rem;
+        }
+
+        nav h1 {
+            flex-shrink: 0;
+        }
+
+        nav h1 a {
+            display: block;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .lang-option {
+            font-size: 1.5rem;
+            text-decoration: none;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lang-option:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .lang-option.active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            min-height: 60vh;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            nav h1 {
+                order: 1;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .language-switcher {
+                order: 2;
+            }
+        }
+    </style>
+</body>
+</html>
